@@ -14,6 +14,10 @@ body {
   color: #363636;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -21,6 +25,13 @@ body {
   height: 104px;
   padding-left: 34px;
   border-bottom: 1px solid #d4d4d4;
+}
+
+.m-menu {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .line {
@@ -81,7 +92,7 @@ body {
   flex-basis: 16px;
   background-color: #000;
   margin: 3px 0;
-  border-radius: 40px;  
+  border-radius: 40px;
 }
 
 .button {
@@ -138,6 +149,7 @@ body {
   background-color: #fff;
   border: 1px solid #d4d4d4;
   border-radius: 0px 0px 5px 5px;
+  text-decoration: none;
   outline: none;
   padding: 25px 0;
   cursor: pointer;
@@ -240,18 +252,23 @@ body {
   font-size: 24px;
   line-height: 28px;
   color: #a5a5a5;
+  cursor: pointer;
+  margin-right: 30px;
 }
 
 .section-title.active {
   color: #363636;
   font-weight: 900;
-  margin-right: 30px;
 }
 
 .tabs-content {
-  display: flex;
+  display: none;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.tabs-content.visible {
+  display: flex;
 }
 
 .card {
@@ -318,6 +335,19 @@ body {
   line-height: 16px;
   color: #000000;
   margin-top: 14px;
+}
+
+.button-next {
+  display: none;
+  background-color: transparent;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  border: none;
+  outline: none;
+  transform: translateY(-50%);
+  z-index: 99;
+  cursor: pointer;
 }
 
 @media (max-width: 1200px) {
@@ -406,10 +436,71 @@ body {
   .container {
     max-width: 560px;
   }
+  .m-menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    left: 0;
+    top: 68px;
+    right: 0;
+    bottom: 0;
+    background: #5671f6;
+  }
+  .m-menu.active {
+    display: flex;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .navigation-link {
+    color: #fff;
+    margin-right: 0;
+    margin-bottom: 18px;
+  }
+  .navigation-link:last-child {
+    margin-bottom: 0;
+  }
+
+  .sign-up {
+    background-color: transparent;
+    color: #ffffff;
+    margin-bottom: 30px;
+  }
+
+  .button-group {
+    border: none;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-input {
+    width: 260px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-image: none;
+    margin: 0;
+  }
+  .news-card {
+    max-width: 90%;
+  }
   .header {
     height: 80px;
     padding-left: 2.5%;
     padding-right: 2.5%;
+  }
+
+  .button-next {
+    display: block;
   }
   .film-wrapper {
     flex-wrap: wrap;
@@ -424,13 +515,10 @@ body {
   .line {
     display: none;
   }
-  .button-group {
-    display: none;
-  }
+
   .mobile-buttons {
     display: flex;
   }
-  
 }
 
 @media (max-width: 576px) {
@@ -447,9 +535,9 @@ body {
     margin-bottom: 26px;
   }
   .film-description {
-     font-size: 14px;
-     line-height: 150%;
-     margin-bottom: 40px;
+    font-size: 14px;
+    line-height: 150%;
+    margin-bottom: 40px;
   }
   .film-trailer,
   .poster {
@@ -462,9 +550,9 @@ body {
   .film-info {
     order: 1;
     margin-bottom: 0;
-  } 
+  }
   .about-film {
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     flex-direction: column;
     margin-bottom: 40px;
   }
@@ -482,5 +570,7 @@ body {
   .tabs {
     margin-bottom: 35px;
   }
-  
+  .search-input {
+    display: none;
+  }
 }
